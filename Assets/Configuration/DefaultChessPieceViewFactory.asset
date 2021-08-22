@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c252457ba2d0bc4b9432e61eeadbef9, type: 3}
+  m_Name: DefaultChessPieceViewFactory
+  m_EditorClassIdentifier: 
+  _darkChessPieceViews:
+  - {fileID: 1841699368808881593, guid: 7c173bb346064e34a80a48e1c04825ea, type: 3}
+  - {fileID: 5037848732308824363, guid: 7311b074ef02ad848b33c318ffa39e5b, type: 3}
+  - {fileID: 6908081812681547868, guid: 0717afc4b833683478afa332743bcae5, type: 3}
+  - {fileID: 6131076079078272002, guid: 376f8348114107a4bb9bd8a7df6be544, type: 3}
+  - {fileID: 1030774399769812809, guid: 40e51f76aaafb1c428f0a9874098a3a1, type: 3}
+  - {fileID: 4705261306425316148, guid: 42bd655c9bebaad4e9304f95e87e9d81, type: 3}
+  _lightChessPieceViews:
+  - {fileID: 1454871719058374141, guid: 6dc537b4fac951d4f9fc0c11971ab36d, type: 3}
+  - {fileID: 5164950155113818949, guid: d7d40bce37569c54c9dbd702ddd3409d, type: 3}
+  - {fileID: 2360742873104875621, guid: 9e4855e5856a9c34db6544996d954bf1, type: 3}
+  - {fileID: 4279380049593064272, guid: 1d74d60e83a687e4aa3ebe98bf2329f6, type: 3}
+  - {fileID: 3016156532388223938, guid: a024f20a27b79eb47b10971fd891330e, type: 3}
+  - {fileID: 2803148881427274833, guid: 9b475c585ef1d084fb0ff1410efc9971, type: 3}
+  _movementNames:
+  - Pawn
+  - Bishop
+  - Knight
+  - Rook
+  - Queen
+  - King
+  _position: {fileID: 11400000, guid: debe312473a5fa84a80ba20805c83897, type: 2}

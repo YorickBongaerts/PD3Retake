@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43d0dc3f7ac013e4fbca9d079dc47f73, type: 3}
+  m_Name: DefaultCardViewFactory
+  m_EditorClassIdentifier: 
+  _cardViews:
+  - {fileID: 1155239123939023078, guid: 3e6beb812b10e6e43b040c706d8243ef, type: 3}
+  - {fileID: 2865521614676862400, guid: af65c0cea862dc041b12e49bf4c68a79, type: 3}
+  - {fileID: 8757487576535431, guid: 02a502b204ab7bc4f91dcce5b35c8109, type: 3}
+  - {fileID: 6451594990224059467, guid: d779c4b88bb86664e8077d0ecd3e1cf0, type: 3}
+  _cardNames:
+  - Charge
+  - Push
+  - Swipe
+  - Teleport

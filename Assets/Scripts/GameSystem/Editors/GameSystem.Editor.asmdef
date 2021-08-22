@@ -1,0 +1,18 @@
+{
+    "name": "GameSystem.Editor",
+    "references": [
+        "GUID:4987b762c21cc57448417ac97d34d9d0",
+        "GUID:59b5ac69cb9347347801c4a26de2833e",
+        "GUID:16dfd18827883f444b76119384293287",
+        "GUID:f8938bca30ca1f646ab66d9e29daa290"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
