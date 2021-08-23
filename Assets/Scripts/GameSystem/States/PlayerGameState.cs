@@ -20,9 +20,13 @@ namespace GameSystem.States
         
         private List<Tile> _highlightedTiles = new List<Tile>();
 
+        private List<HexenPiece> _allPieces = new List<HexenPiece>();
+
         private Deck<CardBase> _deck;
         private Hand<CardBase> _hand;
         private int _cardsPlayed;
+
+        private int _currentPlayerIndex;
 
         public PlayerGameState(Board<HexenPiece> board, HexenPiece player, Deck<CardBase> deck, Hand<CardBase> hand)
         {
@@ -55,7 +59,12 @@ namespace GameSystem.States
             _highlightedTiles.Clear();
 
             if (_cardsPlayed == 2)
-                StateMachine.MoveTo(GameStates.Enemy);
+            {
+                _currentPlayerIndex++;
+                _player = _board.Pieces[_currentPlayerIndex];
+                _cardsPlayed = 0;
+            }
+                //StateMachine.MoveTo(GameStates.Enemy);
         }
         public override void OnCardDragStart(string card)
         {

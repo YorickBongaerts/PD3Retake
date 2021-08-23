@@ -236,6 +236,8 @@ public class GameLoop : SingletonMonoBehaviour<GameLoop>
             MoveManager.Register(piece, pieceView.MovementName);
 
             pieceView.Model = piece;
+
+            Board.Pieces.Add(piece);
         }
         var enemyPieceViews = FindObjectsOfType<EnemyView>();
         foreach (var pieceView in enemyPieceViews)
@@ -251,12 +253,11 @@ public class GameLoop : SingletonMonoBehaviour<GameLoop>
 
             pieceView.Model = piece;
 
-            Board.Enemies.Add(piece);
+            Board.Pieces.Add(piece);
 
             // Add enemy views here to keep it out of board
             Enemies.Add(pieceView);
         }
-        //}
     }
     private void FindPlayer()
     {

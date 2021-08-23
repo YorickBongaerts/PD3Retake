@@ -45,7 +45,7 @@ namespace GameSystem.States
             var _tiles = FindFreeTiles().Where(x => _board.PieceAt(x) == null).ToList();
 
             // Assign tile to enemies as target
-            var _enemiesFiltered = _board.Enemies.Where(x => (x.Target == null && !_occupiedTiles.Contains(_board.TileOf(x)))).ToList();
+            var _enemiesFiltered = _board.Pieces.Where(x => (x.Target == null && !_occupiedTiles.Contains(_board.TileOf(x)))).ToList();
 
             for (int i = 0; i < _enemiesFiltered.Count; i++)
             {
@@ -122,7 +122,7 @@ namespace GameSystem.States
 
         private void MoveEnemies()
         {
-            var _enemiesToMove = _board.Enemies.Where(x => x.Target != null).ToList();
+            var _enemiesToMove = _board.Pieces.Where(x => x.Target != null).ToList();
 
             foreach (HexenPiece enemy in _enemiesToMove)
             {

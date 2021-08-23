@@ -51,7 +51,7 @@ namespace GameSystem.Views
         {
             // Remove from lists
             GameLoop.Instance.Enemies.Remove(this);
-            GameLoop.Instance.Board.Enemies.Remove(Model);
+            GameLoop.Instance.Board.Pieces.Remove(Model);
             Destroy(gameObject);
         }
         private void ModelMoved(object sender, PieceMovedEventArgs e)
