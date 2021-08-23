@@ -32,6 +32,7 @@ public class GameLoop : SingletonMonoBehaviour<GameLoop>
 
     private PlayerView _playerView;
 
+
     #endregion
 
     #region Properties
@@ -43,6 +44,7 @@ public class GameLoop : SingletonMonoBehaviour<GameLoop>
     public MoveManager<HexenPiece> MoveManager { get; internal set; }
     public List<EnemyView> Enemies { get; } = new List<EnemyView>();
 
+    public List<GameObject> PieceViews = new List<GameObject>();
     #endregion
 
     #region Methods
@@ -238,6 +240,8 @@ public class GameLoop : SingletonMonoBehaviour<GameLoop>
             pieceView.Model = piece;
 
             Board.Pieces.Add(piece);
+
+            PieceViews.Add(pieceView.gameObject);
         }
         var enemyPieceViews = FindObjectsOfType<EnemyView>();
         foreach (var pieceView in enemyPieceViews)
@@ -257,7 +261,10 @@ public class GameLoop : SingletonMonoBehaviour<GameLoop>
 
             // Add enemy views here to keep it out of board
             Enemies.Add(pieceView);
+
+            PieceViews.Add(pieceView.gameObject);
         }
+        
     }
     private void FindPlayer()
     {

@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using UnityEngine;
 
 namespace GameSystem.States
 {
@@ -25,6 +26,9 @@ namespace GameSystem.States
         private int _cardsPlayed;
 
         private int _currentPlayerIndex;
+
+        [SerializeField]
+        private Material _playerMaterial, _enemyMaterial;
 
         public PlayerGameState(Board<HexenPiece> board, HexenPiece player, Deck<CardBase> deck, Hand<CardBase> hand)
         {
@@ -58,13 +62,14 @@ namespace GameSystem.States
 
             if (_cardsPlayed == 2)
             {
-                
+                GameLoop.Instance.PieceViews[_currentPlayerIndex].GetComponentInChildren<MeshRenderer>().material = _enemyMaterial;
                 _currentPlayerIndex++;
                 
                 if (_currentPlayerIndex >= _board.Pieces.Count)
                     _currentPlayerIndex = _board.Pieces.IndexOf(_player);
                 
                 _player = _board.Pieces[_currentPlayerIndex];
+                GameLoop.Instance.PieceViews[_currentPlayerIndex].GetComponentInChildren<MeshRenderer>().material = _playerMaterial;
                 _cardsPlayed = 0;
             }
                 //StateMachine.MoveTo(GameStates.Enemy);
