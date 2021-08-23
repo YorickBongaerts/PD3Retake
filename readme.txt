@@ -1,6 +1,6 @@
 Ik heb 2 versies ingediend:
 V1 bevat een werkend project zonder dat de gamestates geimplementeerd zijn
-V2 bevat een poging tot het implementeren van deze states
+V2 bevat een poging tot het implementeren van deze states en ik denk dat het werkt
 
 
 Antwoorden op de vragen in de .docx:
@@ -21,11 +21,10 @@ te steken en gedeactiveerd door het eruit te halen of een ander object er in
 te steken. Ook wordt er in dezelfde methode de view van de oude player
 unhighlighted en de view van de nieuwe gehighlight
 
-TODO: 2 states maken
-geen idee hoe ik dit zou moeten doen, ik begrijp gamestates enzo niet volledig,
-dus opteer ik om dit niet te maken zodat ik een werkend project kan inleveren
-
-
+aangezien ik dit zelf niet helemaal begrijp kan ik hier moeilijk extra uitleg bij 
+geven, maar ik denk dat het werkt. De speler wordt geselecteerd in 
+PlayerSelectGameState en dan doorgegeven aan de GameLoop, waarna in de
+PlayerGameState de _player assigned wordt via de GameLoop
 
 
 TELEPORT:

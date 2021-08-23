@@ -46,7 +46,7 @@ namespace GameSystem.States
             if (_currentPlayerIndex >= _board.Pieces.Count)
                 _currentPlayerIndex = 0;//_board.Pieces.IndexOf(_player);
             _player = _board.Pieces[_currentPlayerIndex];
-            PlayGameState.NewPlayer = _player;
+            GameLoop.Instance.Player = _player;
             _playerView = GameLoop.Instance.PieceViews[_currentPlayerIndex];
 
             //highlight current player

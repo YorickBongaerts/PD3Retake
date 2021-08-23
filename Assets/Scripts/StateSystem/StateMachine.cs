@@ -8,7 +8,7 @@ namespace StateSystem
 {
     public class StateMachine<TState> where TState : IState<TState>
     {
-        Dictionary<string, TState> _states = new Dictionary<string, TState>();
+        public Dictionary<string, TState> _states = new Dictionary<string, TState>();
 
         public void RegisterState(string name, TState state)
         {

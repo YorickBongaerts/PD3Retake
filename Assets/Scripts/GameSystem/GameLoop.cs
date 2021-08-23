@@ -28,11 +28,10 @@ public class GameLoop : SingletonMonoBehaviour<GameLoop>
     [SerializeField]
     PositionHelper _positionHelper = null;
 
-    StateMachine<GameStateBase> _stateMachine;
+    private StateMachine<GameStateBase> _stateMachine;
 
     private PlayerView _playerView;
-
-
+    
     #endregion
 
     #region Properties
@@ -47,6 +46,8 @@ public class GameLoop : SingletonMonoBehaviour<GameLoop>
     public List<GameObject> PieceViews = new List<GameObject>();
 
     public Material PlayerMaterial, EnemyMaterial;
+
+    public HexenPiece Player;
     #endregion
 
     #region Methods
@@ -84,15 +85,17 @@ public class GameLoop : SingletonMonoBehaviour<GameLoop>
         ConnectViewsToModel();
 
         FindPlayer();
+        
+        Player = _playerView.Model;
 
         var playGameState = new PlayGameState(Board, MoveManager);
         _stateMachine.RegisterState(GameStates.Play, playGameState);
         _stateMachine.RegisterState(GameStates.Replay, new ReplayGameState(replayManager));
-        _stateMachine.RegisterState(GameStates.Player, new PlayerGameState(Board, _playerView.Model, Deck, Hand));
-        _stateMachine.RegisterState(GameStates.Select, new PlayerSelectGameState(Board, _playerView.Model, PlayerMaterial, EnemyMaterial));
+        _stateMachine.RegisterState(GameStates.Player, new PlayerGameState(Board, Player, Deck, Hand));
+        _stateMachine.RegisterState(GameStates.Select, new PlayerSelectGameState(Board, Player, PlayerMaterial, EnemyMaterial));
         //_stateMachine.RegisterState(GameStates.Enemy, new EnemyGameState(Board, _playerView.Model));
         _stateMachine.MoveTo(GameStates.Player);
-
+        
         // Manual hexpiece click movement
         MoveManager.Register(PlayerMoveCommandProvider.Name, new PlayerMoveCommandProvider(playGameState, replayManager));
         //MoveManager.Register(EnemyMoveCommandProvider.Name, new EnemyMoveCommandProvider(playGameState, replayManager));

@@ -4871,6 +4871,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _positionHelper: {fileID: 11400000, guid: debe312473a5fa84a80ba20805c83897, type: 2}
+  PieceViews: []
+  PlayerMaterial: {fileID: 2100000, guid: f958914fc34c12643bbef121a947fac0, type: 2}
+  EnemyMaterial: {fileID: 2100000, guid: 7e09433cbf446b74f9e3951824819b7b, type: 2}
 --- !u!1 &1514142546
 GameObject:
   m_ObjectHideFlags: 0
