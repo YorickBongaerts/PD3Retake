@@ -17,6 +17,8 @@ namespace GameSystem.States
 
         private HexenPiece _player;
 
+        private GameObject _playerView;
+
         private CardBase _activeCard;
         
         private List<Tile> _highlightedTiles = new List<Tile>();
@@ -27,7 +29,6 @@ namespace GameSystem.States
 
         private int _currentPlayerIndex;
 
-        [SerializeField]
         private Material _playerMaterial, _enemyMaterial;
 
         public PlayerGameState(Board<HexenPiece> board, HexenPiece player, Deck<CardBase> deck, Hand<CardBase> hand, Material playerMaterial, Material enemyMaterial)
@@ -64,14 +65,23 @@ namespace GameSystem.States
 
             if (_cardsPlayed == 2)
             {
-                GameLoop.Instance.PieceViews[_currentPlayerIndex].GetComponentInChildren<MeshRenderer>().material = _enemyMaterial;
+                //enter the original player into _playerView
+                if (_playerView == null)
+                    _playerView = GameLoop.Instance.PieceViews[_currentPlayerIndex];
+
+                //unhighlight current player
+                _playerView.GetComponentInChildren<MeshRenderer>().material = _enemyMaterial;
+                
+                //Select the next player
                 _currentPlayerIndex++;
-                
                 if (_currentPlayerIndex >= _board.Pieces.Count)
-                    _currentPlayerIndex = _board.Pieces.IndexOf(_player);
-                
+                    _currentPlayerIndex = 0;//_board.Pieces.IndexOf(_player);
                 _player = _board.Pieces[_currentPlayerIndex];
-                GameLoop.Instance.PieceViews[_currentPlayerIndex].GetComponentInChildren<MeshRenderer>().material = _playerMaterial;
+                _playerView = GameLoop.Instance.PieceViews[_currentPlayerIndex];
+                
+                //highlight current player
+                _playerView.GetComponentInChildren<MeshRenderer>().material = _playerMaterial;
+                
                 _cardsPlayed = 0;
             }
                 //StateMachine.MoveTo(GameStates.Enemy);
