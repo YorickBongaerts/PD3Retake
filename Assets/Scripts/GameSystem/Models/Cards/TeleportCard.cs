@@ -20,26 +20,16 @@ namespace GameSystem.Models.Cards
             if (Tiles(playerTile, focusedTile).Contains(focusedTile))
                 Board.Move(playerTile, focusedTile);
         }
-
-        public override List<Tile> Tiles(Tile playerTile, Tile CardTile)
-        {
-            List<Tile> NeighbourStrategy(Tile centerTile) => Neighbours(centerTile, _board);
-
-            float DistanceStrategy(Tile fromTile, Tile toTile) => Distance(fromTile, toTile, _board);
-
-            AStarPathFinding<Tile> aStarPathFinding = new AStarPathFinding<Tile>(NeighbourStrategy, DistanceStrategy, DistanceStrategy);
-
-            return aStarPathFinding.Path(playerTile, CardTile);
-        }
-
         List<Tile> Neighbours(Tile tile, Board<HexenPiece> board)
         {
             var neighbours = new List<Tile>();
 
+            //returns all tiles around the tile which has been given through the parameter
             var validTiles = new HexMovementHelper(board, tile, 1)
                 .Radius(1)
                 .GenerateTiles();
 
+            //makes sure there are no pieces on the tiles in validtiles
             foreach (var validTile in validTiles)
             {
                 if (validTile != null && board.PieceAt(validTile) == null)
@@ -48,7 +38,6 @@ namespace GameSystem.Models.Cards
 
             return neighbours;
         }
-
         float Distance(Tile fromTile, Tile toTile, Board<HexenPiece> board)
         {
             var fromPosition = fromTile.Position;
@@ -57,6 +46,17 @@ namespace GameSystem.Models.Cards
             var totalDistance = HexagonHelper.Distance(fromPosition.X, fromPosition.Y, fromPosition.Z, toPosition.X, toPosition.Y, toPosition.Z);
 
             return totalDistance;
+        }
+        public override List<Tile> Tiles(Tile playerTile, Tile CardTile)
+        {
+            //make sure both strategies have acces to the board
+            List<Tile> NeighbourStrategy(Tile centerTile) => Neighbours(centerTile, _board);
+            float DistanceStrategy(Tile fromTile, Tile toTile) => Distance(fromTile, toTile, _board);
+
+            //Create a new pathfinding tool using both strategies. Distance is used twice because heuristics is also a distance
+            AStarPathFinding<Tile> aStarPathFinding = new AStarPathFinding<Tile>(NeighbourStrategy, DistanceStrategy, DistanceStrategy);
+
+            return aStarPathFinding.Path(playerTile, CardTile);
         }
     }
 }
