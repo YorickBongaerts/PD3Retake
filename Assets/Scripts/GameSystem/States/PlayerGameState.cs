@@ -30,12 +30,14 @@ namespace GameSystem.States
         [SerializeField]
         private Material _playerMaterial, _enemyMaterial;
 
-        public PlayerGameState(Board<HexenPiece> board, HexenPiece player, Deck<CardBase> deck, Hand<CardBase> hand)
+        public PlayerGameState(Board<HexenPiece> board, HexenPiece player, Deck<CardBase> deck, Hand<CardBase> hand, Material playerMaterial, Material enemyMaterial)
         {
             _board = board;
             _player = player;
             _deck = deck;
             _hand = hand;
+            _playerMaterial = playerMaterial;
+            _enemyMaterial = enemyMaterial;
         }
         public override void OnEnter()
         {
