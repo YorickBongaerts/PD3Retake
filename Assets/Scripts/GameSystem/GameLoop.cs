@@ -85,12 +85,12 @@ public class GameLoop : SingletonMonoBehaviour<GameLoop>
         _stateMachine.RegisterState(GameStates.Play, playGameState);
         _stateMachine.RegisterState(GameStates.Replay, new ReplayGameState(replayManager));
         _stateMachine.RegisterState(GameStates.Player, new PlayerGameState(Board, _playerView.Model, Deck, Hand));
-        _stateMachine.RegisterState(GameStates.Enemy, new EnemyGameState(Board, _playerView.Model));
-        _stateMachine.MoveTo(GameStates.Enemy);
+        //_stateMachine.RegisterState(GameStates.Enemy, new EnemyGameState(Board, _playerView.Model));
+        _stateMachine.MoveTo(GameStates.Player);
 
         // Manual hexpiece click movement
         MoveManager.Register(PlayerMoveCommandProvider.Name, new PlayerMoveCommandProvider(playGameState, replayManager));
-        MoveManager.Register(EnemyMoveCommandProvider.Name, new EnemyMoveCommandProvider(playGameState, replayManager));
+        //MoveManager.Register(EnemyMoveCommandProvider.Name, new EnemyMoveCommandProvider(playGameState, replayManager));
 
         StartCoroutine(OnPostStart());
     }
