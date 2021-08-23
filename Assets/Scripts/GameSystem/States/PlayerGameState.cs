@@ -20,8 +20,6 @@ namespace GameSystem.States
         
         private List<Tile> _highlightedTiles = new List<Tile>();
 
-        private List<HexenPiece> _allPieces = new List<HexenPiece>();
-
         private Deck<CardBase> _deck;
         private Hand<CardBase> _hand;
         private int _cardsPlayed;
@@ -60,7 +58,12 @@ namespace GameSystem.States
 
             if (_cardsPlayed == 2)
             {
+                
                 _currentPlayerIndex++;
+                
+                if (_currentPlayerIndex >= _board.Pieces.Count)
+                    _currentPlayerIndex = _board.Pieces.IndexOf(_player);
+                
                 _player = _board.Pieces[_currentPlayerIndex];
                 _cardsPlayed = 0;
             }

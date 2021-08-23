@@ -24,6 +24,9 @@ namespace GameSystem.Views
         HexenPiece _model;
         public string MovementName => _movementName;
 
+        [SerializeField]
+        private Material _playerMaterial, _enemyMaterial;
+
         public HexenPiece Model
         {
             get => _model;
@@ -69,5 +72,14 @@ namespace GameSystem.Views
             board.Select(Model);
         }
         public override void Taken() {}
+
+        public void HighLight()
+        {
+            this.gameObject.GetComponentInChildren<MeshRenderer>().material = _playerMaterial;
+        }
+        public void UnHighLight()
+        {
+            this.gameObject.GetComponentInChildren<MeshRenderer>().material = _enemyMaterial;
+        }
     }
 }
