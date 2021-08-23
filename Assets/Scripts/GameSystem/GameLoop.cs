@@ -88,7 +88,8 @@ public class GameLoop : SingletonMonoBehaviour<GameLoop>
         var playGameState = new PlayGameState(Board, MoveManager);
         _stateMachine.RegisterState(GameStates.Play, playGameState);
         _stateMachine.RegisterState(GameStates.Replay, new ReplayGameState(replayManager));
-        _stateMachine.RegisterState(GameStates.Player, new PlayerGameState(Board, _playerView.Model, Deck, Hand, PlayerMaterial, EnemyMaterial));
+        _stateMachine.RegisterState(GameStates.Player, new PlayerGameState(Board, _playerView.Model, Deck, Hand));
+        _stateMachine.RegisterState(GameStates.Select, new PlayerSelectGameState(Board, _playerView.Model, PlayerMaterial, EnemyMaterial));
         //_stateMachine.RegisterState(GameStates.Enemy, new EnemyGameState(Board, _playerView.Model));
         _stateMachine.MoveTo(GameStates.Player);
 
